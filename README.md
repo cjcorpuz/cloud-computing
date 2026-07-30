@@ -1,2 +1,8 @@
-# cloud-computing
-Respiratory for Cloud Computing Activity
+##Name
+C-J B. CORPUZ
+
+##Course and Section
+BSIT 4 - Block 
+
+#Description
+This repository contains my lab activities, exercises, and projects for the Cloud Computing course.
