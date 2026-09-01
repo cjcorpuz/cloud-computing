@@ -1,4 +1,4 @@
-# Linux Server Investigation
+Continue Your Linux Investigation
 
 ## 1. Operating System
 
@@ -42,28 +42,12 @@ The disk information was collected using the `df -h` command.
 
 ## 5. Cloud Migration
 
-If this Linux server were migrated to the cloud, it could be hosted using virtual machine services from AWS, Microsoft Azure, and Google Cloud Platform.
+If this Linux server were migrated to the cloud, the following services could be used to host the Linux server:
 
 | Cloud Platform | Service | Purpose |
 |---|---|---|
-| AWS | Amazon EC2 | Hosts Linux virtual machines and runs server workloads in the AWS Cloud. |
-| Microsoft Azure | Azure Virtual Machines | Provides virtual machines that can run Linux operating systems and applications. |
-| Google Cloud Platform | Compute Engine | Provides virtual machines for running Linux servers and workloads in Google Cloud. |
+| AWS | Amazon EC2 | Host the Linux server as a virtual machine. |
+| Microsoft Azure | Azure Virtual Machines | Host the Linux server as a virtual machine. |
+| Google Cloud Platform | Compute Engine | Host the Linux server as a virtual machine. |
 
-### AWS – Amazon EC2
-
-Amazon EC2 could host this Linux server as a virtual machine. The server's CPU, memory, and storage requirements can be configured through an appropriate EC2 instance.
-
-### Microsoft Azure – Azure Virtual Machines
-
-Azure Virtual Machines could be used to migrate and run the Ubuntu Linux server in the Azure Cloud. The virtual machine can be configured with suitable computing, memory, and storage resources.
-
-### Google Cloud Platform – Compute Engine
-
-Google Compute Engine could host the Ubuntu Linux server as a virtual machine. It provides configurable computing resources for running Linux-based applications and workloads.
-
----
-
-## 6. Summary
-
-The investigated server is running **Ubuntu 24.04 LTS** with an **Intel Xeon E312xx CPU, approximately 1.9 GiB of memory, and a 19 GB root filesystem**. If migrated to the cloud, equivalent virtual machine services are **Amazon EC2**, **Azure Virtual Machines**, and **Google Compute Engine**.
+These services provide virtual computing resources that can run Linux-based workloads in the cloud. The Linux server can be migrated to a suitable virtual machine configuration based on its CPU, memory, storage, and workload requirements.
