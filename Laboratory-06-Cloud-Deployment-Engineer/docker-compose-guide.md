@@ -2,53 +2,49 @@
 
 ## 1. What Does the `services:` Block Do?
 
-The `services:` block defines the containers that Docker Compose will create and manage. In our project, there are two services: `database` and `app`.
+The `services:` block defines the containers or services that Docker Compose will manage. In our project, there are two services: `database` and `app`.
 
 - **Database Service:** Uses the `mariadb:10.6` image to store Nextcloud data.
-- **App Service:** Uses the `nextcloud` image to provide the Nextcloud web application and makes it accessible through port `8080`.
+- **App Service:** Uses the `nextcloud` image to run the Nextcloud web application and exposes port `8080` on the host to port `80` inside the container.
 
-Docker Compose manages both services using one YAML configuration file.
+Using the `services:` block allows both containers to be configured and managed through a single YAML file.
 
-## 2. How Does Nextcloud Find the Database?
+## 2. How Does Nextcloud Find the Database Container?
 
-The Nextcloud application uses the `MYSQL_HOST` environment variable to identify the database server.
-
-In our YAML file, we configured:
+The Nextcloud application finds the database through the `MYSQL_HOST` environment variable.
 
 ```yaml
 MYSQL_HOST=database
 ```
 
-The value `database` matches the name of the database service in the `services:` block. Docker Compose provides network-based service discovery, allowing the Nextcloud container to communicate with the MariaDB container using that service name.
+The value `database` matches the name of the database service in the Docker Compose file. Docker Compose creates a shared network for the services, allowing the Nextcloud container to locate the MariaDB container using its service name.
 
-The database credentials, database name, and username must also match between the two services so Nextcloud can connect successfully.
+This makes communication between the application and database easier without manually entering the database container's IP address.
 
 ## 3. Difference Between `docker run` and `docker-compose up -d`
 
 ### Docker Run
 
-The `docker run` command starts an individual container using options supplied in the command. Each container's configuration is commonly specified separately.
+The `docker run` command starts an individual container. Its configuration, such as the image, ports, and environment variables, is usually specified through command-line options.
+
+Example:
+
+```bash
+docker run -d -p 8080:80 nextcloud
+```
 
 ### Docker Compose
 
-The `docker-compose up -d` command creates and starts the services defined in the `docker-compose.yml` file. It can manage multiple connected containers, their environment variables, port mappings, and network configuration together.
+The `docker-compose up -d` command starts the services defined in the `docker-compose.yml` file. It can create and run multiple connected containers, such as Nextcloud and MariaDB, using one command.
 
-The `-d` option runs the containers in detached mode, allowing them to continue running in the background.
+The `-d` option runs the containers in the background.
 
-### Conclusion
-
-Docker Compose is useful for multi-container applications such as Nextcloud and MariaDB because it keeps the configuration in one file and simplifies deployment and management.
-
-## 4. Commands Used
+Example:
 
 ```bash
-mkdir nextcloud-deployment
-cd nextcloud-deployment
-nano docker-compose.yml
-docker-compose config
 docker-compose up -d
-docker-compose ps
-docker-compose down
 ```
 
-These commands were used to create the project directory, configure and validate the YAML file, deploy the containers, check their status, and shut down the infrastructure.
+### Summary
+
+Docker Run is useful for starting individual containers, while Docker Compose is more convenient for deploying applications that require multiple connected services. In this mission, Docker Compose was used to manage Nextcloud and MariaDB together.
