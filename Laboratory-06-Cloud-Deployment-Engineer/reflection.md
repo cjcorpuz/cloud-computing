@@ -1,13 +1,11 @@
-# Mission 6 Reflection
+# Mission 6: The Cloud Deployment Engineer — Reflection
 
-## What I Learned
-In this laboratory mission, I learned about multi-tier application architecture and the role of Docker Compose in managing multiple containers. I also learned how Nextcloud works with MariaDB to provide a private cloud storage application.
+This mission helped me understand how Docker Compose makes cloud deployment easier and more organized. Instead of manually typing several commands to create and configure individual containers, I can write everything in one `docker-compose.yml` file. With a single command, `docker-compose up -d`, I can start multiple connected services, such as Nextcloud and MariaDB. This saves time, reduces repetitive work, and makes deployment easier to manage.
 
-## Challenges Encountered
-One challenge was understanding how the application container connects to the database container. I also learned the importance of correct YAML formatting and configuration.
+I also learned that YAML indentation is very important. YAML uses spaces to organize its structure, so using a Tab instead of spaces or placing the wrong number of spaces can cause configuration errors. These errors may prevent Docker Compose from reading the file correctly. Running `docker-compose config` helps validate the configuration before deploying the services.
 
-## Importance of Infrastructure as Code
-Infrastructure as Code allows infrastructure to be defined in configuration files. It makes deployments more organized, repeatable, and easier to manage.
+Another important lesson is the use of environment variables, such as `MYSQL_PASSWORD`, `MYSQL_DATABASE`, and `MYSQL_HOST`. These variables provide configuration values that the application and database need to communicate. For example, `MYSQL_HOST=database` allows Nextcloud to locate the MariaDB service through its service name. I also learned that passwords should be handled carefully and should not be exposed in public repositories in real production environments.
 
-## Conclusion
-This mission helped me understand how multiple Docker containers can work together as one application. It also improved my understanding of cloud deployment and technical documentation.
+Deploying Nextcloud in just a few minutes felt exciting and rewarding. It showed me that a cloud storage application can be deployed without manually installing every component separately. Seeing both containers running and accessing the Nextcloud installation page made the concepts more practical and understandable.
+
+Since Mission 1, my understanding of Cloud Computing has improved. Before, I mainly understood it as accessing services and resources through the internet. Now, I have a better appreciation of how applications, containers, networks, and databases work together. This mission taught me that cloud engineering requires not only technical knowledge but also careful configuration, testing, documentation, and troubleshooting. I feel more confident exploring containerized applications and applying these skills to future projects.
