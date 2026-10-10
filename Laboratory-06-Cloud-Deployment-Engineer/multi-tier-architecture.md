@@ -1,30 +1,17 @@
 # Multi-Tier Application Architecture
 
-## Introduction
-A multi-tier application architecture divides an application into separate layers. Each layer has a specific responsibility and communicates with the other layers.
+## What is a Two-Tier Architecture?
 
-## Architecture Components
+A Two-Tier Architecture is an application design that separates an application into two main parts: the Web/Application Tier and the Database Tier. In this mission, Nextcloud serves as the web application, while MariaDB manages the database.
 
-### 1. Frontend – Nextcloud
-Nextcloud provides the web interface that allows users to access and manage their files through a browser.
+## 1. The Web/Application Tier
 
-### 2. Backend – MariaDB
-MariaDB stores the database information used by Nextcloud, including user information and file metadata.
+The Web/Application Tier is responsible for displaying the user interface and handling HTTP requests from users through a web browser. In this project, Nextcloud runs inside a Docker container and allows users to upload, download, organize, and manage their files.
 
-### 3. Docker Compose
-Docker Compose defines and manages the Nextcloud and MariaDB services using a YAML configuration file.
+## 2. The Database Tier
 
-## How the Components Work Together
-1. The user accesses Nextcloud through a web browser.
-2. The Nextcloud container processes the user's request.
-3. Nextcloud communicates with MariaDB through a private Docker network.
-4. MariaDB returns the requested database information to Nextcloud.
+The Database Tier is responsible for storing and managing persistent data, such as user account information and file metadata. In this project, MariaDB runs in a separate Docker container and provides the database services required by Nextcloud.
 
-## Benefits
-- Organized application components.
-- Easier deployment and management.
-- Better separation of responsibilities.
-- Persistent data through Docker volumes.
+## 3. Why Separate Them?
 
-## Conclusion
-The Nextcloud and MariaDB deployment demonstrates how multiple containers work together to provide a private cloud storage application.
+Separating the web application and database into two containers makes the system easier to manage, maintain, and troubleshoot because each service has its own responsibility. It also allows the services to be updated or scaled independently and helps isolate the database from direct public access. This separation improves organization and security when combined with proper network configuration and access controls.
